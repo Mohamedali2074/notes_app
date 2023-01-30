@@ -1,16 +1,22 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:notes_app/constants.dart';
 
 class CustomButton extends StatelessWidget {
-  CustomButton({required this.text});
+  const CustomButton({
+    Key? key,
+    this.onTap,
+    required this.text,
+  }) : super(key: key);
 
-  //  VoidCallback? onTap;
+  final void Function()? onTap;
 
-  String text;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: onTap,
+      onTap: onTap,
       child: Container(
         child: Center(
           child: Text(
