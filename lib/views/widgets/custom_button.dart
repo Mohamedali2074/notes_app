@@ -7,10 +7,13 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     Key? key,
     this.onTap,
+    this.isLoading = false,
     required this.text,
   }) : super(key: key);
 
   final void Function()? onTap;
+
+  final bool isLoading;
 
   final String text;
   @override
@@ -19,10 +22,14 @@ class CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         child: Center(
-          child: Text(
-            text,
-            style: TextStyle(color: Colors.black),
-          ),
+          child: isLoading
+              ? const CircularProgressIndicator(
+                  color: Colors.white,
+                )
+              : Text(
+                  text,
+                  style: TextStyle(color: Colors.black),
+                ),
         ),
         width: double.infinity,
         height: 60,
