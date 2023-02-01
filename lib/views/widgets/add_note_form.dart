@@ -7,9 +7,7 @@ import 'custom_button.dart';
 import 'custom_text_field.dart';
 
 class AddNoteForm extends StatefulWidget {
-  const AddNoteForm({
-    super.key,
-  });
+  const AddNoteForm({super.key});
 
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
@@ -61,7 +59,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
 
                     var noteModel = NoteModel(
                         title: title!,
-                        subtitle: subTitle!,
+                        subTitle: subTitle!,
                         date: DateTime.now().toString(),
                         color: Colors.blue.value);
                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
@@ -70,7 +68,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     setState(() {});
                   }
                 },
-                text: 'Add',
               );
             },
           ),

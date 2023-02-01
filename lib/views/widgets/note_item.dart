@@ -1,8 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:notes_app/models/note_model.dart';
+
 import 'package:notes_app/views/edit_note_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
+  const NoteItem({Key? key, required this.note}) : super(key: key);
+
+  final NoteModel note;
 
   @override
   Widget build(BuildContext context) {
@@ -11,23 +16,25 @@ class NoteItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) {
-            return const EditNoteView();
+            return EditNoteView(
+              note: note,
+            );
           }),
         );
       },
       child: Container(
-        padding: EdgeInsets.only(top: 24, bottom: 24, left: 16),
+        padding: const EdgeInsets.only(top: 24, bottom: 24, left: 16),
         decoration: BoxDecoration(
-          color: Color(0xffD7E9B9),
+          color: Color(note.color),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title: const Text(
-                'Flutter tips',
-                style: TextStyle(
+              title: Text(
+                note.title,
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 26,
                 ),
@@ -35,7 +42,7 @@ class NoteItem extends StatelessWidget {
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 16, bottom: 16),
                 child: Text(
-                  'Hello there you welcome, I am mohamed ali',
+                  note.subTitle,
                   style: TextStyle(
                     color: Colors.black.withOpacity(.4),
                     fontSize: 18,
@@ -44,17 +51,17 @@ class NoteItem extends StatelessWidget {
               ),
               trailing: IconButton(
                 onPressed: () {},
-                icon: (Icon(
+                icon: const Icon(
                   Icons.delete,
                   color: Colors.black,
                   size: 32,
-                )),
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 24),
               child: Text(
-                'jan21,2023',
+                note.date,
                 style: TextStyle(
                   color: Colors.black.withOpacity(.4),
                   fontSize: 16,
