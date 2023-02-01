@@ -27,6 +27,7 @@ class CustomAppBar extends StatelessWidget {
           flex: 20,
         ),
         CustomIcon(
+          onPressed: onPressed,
           icon: icon,
         ),
       ],
